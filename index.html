@@ -1,8 +1,310 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title> CS696A </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javid Shaik - Software Engineer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #f9fafb; /* Lighter gray background */
+            color: #1f2937; /* Darker text for high contrast */
+        }
+        .section-title {
+            @apply text-4xl font-extrabold text-center mb-16 text-gray-900 tracking-tight;
+        }
+        .card {
+            @apply bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] flex flex-col border border-gray-200;
+        }
+        .skill-card {
+             @apply bg-white p-6 rounded-2xl shadow-lg transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-200 text-center;
+        }
+        .tag {
+            @apply inline-block bg-indigo-100 text-indigo-800 text-xs font-semibold mr-2 mb-2 px-3 py-1.5 rounded-full;
+        }
+        .btn-primary { 
+            @apply inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95 text-md;
+        }
+        .btn-secondary { 
+             @apply mt-auto inline-block bg-gray-100 hover:bg-gray-200 text-indigo-700 font-semibold py-3 px-6 rounded-full shadow-sm hover:shadow-md transition-all duration-200 transform hover:scale-105 active:scale-95 text-sm border border-gray-300;
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                @apply text-3xl mb-12;
+            }
+            .btn-primary {
+                @apply py-3 px-6 text-sm;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* New Scroll-Up Navigation Bar Styles */
+        #scroll-up-nav {
+            @apply fixed top-0 left-0 w-full p-3 bg-white/80 shadow-lg z-40 transition-all duration-300 ease-in-out flex items-center backdrop-blur-lg;
+            opacity: 0;
+            transform: translateY(-100%); 
+            pointer-events: none;
+        }
+        #scroll-up-nav.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* Main hero content fade-out effect */
+        #hero-header-content {
+            transition: opacity 0.3s ease-in-out;
+        }
+        #hero-header-content.scrolled-past {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+    </style>
 </head>
-<body>
-hello world
+<body class="text-gray-800">
+
+    <div id="scroll-up-nav">
+        <div class="max-w-7xl mx-auto flex items-center space-x-4 px-4 sm:px-6 lg:px-8">
+            <img src="https://placehold.co/44x44/6366F1/FFFFFF?text=JS&font=inter&fontweight=bold" alt="Javid Shaik" class="w-11 h-11 rounded-full border-2 border-indigo-200">
+            <span class="text-xl font-bold text-indigo-700">Javid Shaik</span>
+        </div>
+    </div>
+
+    <header class="bg-gradient-to-br from-gray-900 to-gray-800 text-white min-h-screen flex items-center justify-center pt-20 pb-10 text-center">
+        <div class="max-w-4xl mx-auto px-4 reveal">
+            <div id="hero-header-content">
+                <div class="relative inline-block mb-8">
+                    <img src="https://placehold.co/180x180/FFFFFF/111827?text=JS&font=inter&fontweight=bold" alt="Javid Shaik" class="w-44 h-44 rounded-full mx-auto shadow-2xl z-10 relative border-4 border-gray-700">
+                    <div class="absolute inset-0 bg-indigo-500 rounded-full blur-2xl opacity-40"></div>
+                </div>
+                <h1 class="text-5xl sm:text-7xl font-extrabold mb-5 tracking-tight">Javid Shaik</h1>
+            </div>
+            <p class="text-2xl sm:text-3xl text-gray-400 mb-12 font-light">Innovative Software Engineer | Full-Stack & Android Specialist</p>
+            <div class="space-x-6 mb-12">
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors text-3xl"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors text-3xl"><i class="fab fa-github"></i></a>
+            </div>
+            <a href="#projects" class="btn-primary text-lg">View My Work</a>
+        </div>
+    </header>
+
+    <section id="about" class="py-24 bg-white reveal">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title">About Me</h2>
+            <p class="text-xl text-center text-gray-700 leading-relaxed">
+                Hello! I'm Javid Shaik, a passionate and driven Computer Science graduate student at Pace University with a strong foundation in full-stack web and Android application development. I thrive on solving complex problems and building intuitive, efficient, and impactful software solutions. My journey in tech is fueled by a constant desire to learn and adapt to new technologies, and I'm eager to contribute my skills to innovative projects.
+            </p>
+        </div>
+    </section>
+
+    <section id="skills" class="py-24 bg-gray-50 reveal">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title">Technical Expertise</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+                <div class="skill-card">
+                    <i class="fas fa-code mb-4 text-indigo-600 text-5xl"></i>
+                    <h3 class="text-xl font-bold text-gray-900">Languages</h3>
+                    <p class="text-gray-600 text-md mt-2">Java, Python, Kotlin, Go, SQL, JavaScript, HTML/CSS, C</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-cubes mb-4 text-indigo-600 text-5xl"></i>
+                    <h3 class="text-xl font-bold text-gray-900">Frameworks & Libraries</h3>
+                    <p class="text-gray-600 text-md mt-2">React, Jetpack Compose, Retrofit, Node.js</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-database mb-4 text-indigo-600 text-5xl"></i>
+                    <h3 class="text-xl font-bold text-gray-900">Databases & Platforms</h3>
+                    <p class="text-gray-600 text-md mt-2">MongoDB, MySQL, RoomDB, Redis, AWS, Docker</p>
+                </div>
+                 <div class="skill-card">
+                    <i class="fas fa-tools mb-4 text-indigo-600 text-5xl"></i>
+                    <h3 class="text-xl font-bold text-gray-900">Developer Tools</h3>
+                    <p class="text-gray-600 text-md mt-2">Git, ServiceNow, Windows, Unix, MS Office Suite</p>
+                </div>
+                 <div class="skill-card">
+                    <i class="fas fa-server mb-4 text-indigo-600 text-5xl"></i>
+                    <h3 class="text-xl font-bold text-gray-900">Server & OS</h3>
+                    <p class="text-gray-600 text-md mt-2">Windows, Unix</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-cloud mb-4 text-indigo-600 text-5xl"></i>
+                    <h3 class="text-xl font-bold text-gray-900">Cloud Services</h3>
+                    <p class="text-gray-600 text-md mt-2">AWS</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24 bg-white reveal">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="space-y-16">
+                <div class="card" id="project-ordelo">
+                    <img src="https://placehold.co/1200x800/6366F1/FFFFFF?text=ORDELO&font=inter" alt="ORDELO Project" class="w-full h-auto object-cover">
+                    <div class="p-8">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-3">ORDELO - Full-Stack App</h3>
+                        <p class="project-description text-gray-700 mb-6 leading-relaxed flex-grow">A food-focused enterprise application developed as a team project. My key contribution was the geolocation feature, enhancing user experience by providing location-specific data and integrating with the Spoonacular API for personalized content.</p>
+                        <div class="mb-6">
+                            <span class="tag">JavaScript</span><span class="tag">Node.js</span><span class="tag">Golang</span><span class="tag">MongoDB</span><span class="tag">Redis</span><span class="tag">Docker</span>
+                        </div>
+                        <div class="mt-auto">
+                             <a href="#" class="btn-secondary">View Details (Coming Soon)</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" id="project-news-explorer">
+                    <img src="https://placehold.co/1200x800/EC4899/FFFFFF?text=News+Explorer&font=inter" alt="News Explorer App" class="w-full h-auto object-cover">
+                    <div class="p-8">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-3">News Explorer - Android App</h3>
+                        <p class="project-description text-gray-700 mb-6 leading-relaxed flex-grow">A modern Android news reader built with 100% Kotlin, Jetpack Compose, and MVVM architecture. Features offline caching via RoomDB, NewsAPI integration, adaptive Material 3 UI, and over 7 distinct functionalities including search and bookmarking.</p>
+                         <div class="mb-6">
+                            <span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span><span class="tag">MVVM</span><span class="tag">Retrofit</span><span class="tag">RoomDB</span>
+                        </div>
+                        <div class="mt-auto">
+                            <a href="#" class="btn-secondary">View Details (Coming Soon)</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" id="project-skyspy">
+                     <img src="https://placehold.co/1200x800/F59E0B/FFFFFF?text=SkySpy&font=inter" alt="SkySpy Weather App" class="w-full h-auto object-cover">
+                    <div class="p-8">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-3">SkySpy - React Weather App</h3>
+                        <p class="project-description text-gray-700 mb-6 leading-relaxed flex-grow">A feature-rich weather application using React, incorporating 5+ key features. Integrated Open-Meteo and Nominatim APIs for real-time weather and geocoding data. Engineered a dynamic UI with Celsius/Fahrenheit conversion and light/dark modes.</p>
+                        <div class="mb-6">
+                            <span class="tag">React</span><span class="tag">JavaScript</span><span class="tag">API Integration</span><span class="tag">Open-Meteo</span>
+                        </div>
+                       <div class="mt-auto">
+                             <a href="#" class="btn-secondary">View Details (Coming Soon)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-24 bg-gray-50 reveal">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="bg-white p-8 sm:p-10 rounded-2xl shadow-xl border border-gray-200">
+                <div class="flex flex-col sm:flex-row justify-between items-start mb-4">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-900">System Administrator</h3>
+                        <p class="text-indigo-600 font-medium text-lg">Wipro, Hyderabad, India</p>
+                    </div>
+                    <p class="text-gray-600 text-md mt-1 sm:mt-0 font-medium">July 2022 – Nov 2023</p>
+                </div>
+                <ul class="list-disc list-inside text-gray-700 space-y-3 leading-relaxed text-md">
+                    <li>Resolved 100+ end-user support tickets weekly in ServiceNow across hardware, software, and Windows applications.</li>
+                    <li>Streamlined system administration by managing user accounts, performing password resets, and installing software.</li>
+                    <li>Developed and maintained user documentation and training materials, empowering end-user self-sufficiency.</li>
+                    <li>Deployed and configured new hardware and software for business expansion and tech upgrades.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="py-24 bg-white reveal">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title">Academic Background</h2>
+            <div class="space-y-10">
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-200">
+                    <h3 class="text-2xl font-semibold text-gray-900">Pace University</h3>
+                    <p class="text-indigo-600 text-lg">Master of Science (MS) in Computer Science</p>
+                    <p class="text-sm text-gray-500 mt-1">New York, NY | Expected Dec 2025</p>
+                    <p class="text-md text-gray-700 mt-2 font-medium">GPA: 3.97/4.0</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-200">
+                    <h3 class="text-2xl font-semibold text-gray-900">Acharya Nagarjuna University</h3>
+                    <p class="text-indigo-600 text-lg">Bachelor of Science (BS) in Computer Science</p>
+                    <p class="text-sm text-gray-500 mt-1">Guntur, India | June 2022</p>
+                    <p class="text-md text-gray-700 mt-2 font-medium">GPA: 8.91/10.0</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-28 bg-gray-900 text-white reveal">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl sm:text-5xl font-bold mb-8">Let's Build Something Amazing!</h2>
+            <p class="text-xl text-gray-400 mb-12 leading-relaxed">
+                I'm actively seeking new opportunities and collaborations. If you have a project in mind or just want to discuss technology, I'd love to hear from you.
+            </p>
+            <a href="mailto:javid.shaik@pace.edu" class="btn-primary text-lg">
+                <i class="fas fa-envelope mr-2.5"></i> Email Me
+            </a>
+             <p class="mt-10 text-lg text-gray-400">
+                Or call: <a href="tel:+15513891411" class="hover:underline font-semibold">(551)-389-1411</a>
+            </p>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-gray-400 text-center py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-6">
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-indigo-400 transition-colors mx-3 text-3xl"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-indigo-400 transition-colors mx-3 text-3xl"><i class="fab fa-github"></i></a>
+            </div>
+            <p class="text-md">&copy; <span id="currentYear"></span> Javid Shaik. All Rights Reserved.</p>
+            <p class="text-sm mt-2">Designed with Passion & Coded with Care <i class="fas fa-code text-indigo-400"></i></p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Intersection Observer for scroll animations
+        const revealElements = document.querySelectorAll('.reveal');
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries, observerInstance) => { 
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observerInstance.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+        revealElements.forEach(el => observer.observe(el));
+
+        // Transforming Header on Scroll
+        const heroHeaderContent = document.getElementById('hero-header-content');
+        const scrollUpNav = document.getElementById('scroll-up-nav');
+        
+        // We set a threshold based on the position of the hero content.
+        // Let's say we want the change to happen after scrolling past the name.
+        const scrollThreshold = heroHeaderContent ? heroHeaderContent.offsetTop + heroHeaderContent.offsetHeight - 50 : 300; 
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > scrollThreshold) {
+                // Scrolled past the hero content: Show the small nav, hide the big hero content
+                scrollUpNav.classList.add('visible');
+                heroHeaderContent.classList.add('scrolled-past');
+            } else {
+                // Scrolled back to the top: Hide the small nav, show the big hero content
+                scrollUpNav.classList.remove('visible');
+                heroHeaderContent.classList.remove('scrolled-past');
+            }
+        }, false);
+    </script>
+
 </body>
 </html>
